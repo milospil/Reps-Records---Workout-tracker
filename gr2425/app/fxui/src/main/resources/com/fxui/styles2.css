@@ -1,0 +1,5 @@
+#xAxis .label,
+#yAxis .label,
+.label.header-class-two {
+    -fx-text-fill: white; /* Sett fargen til hvit */
+}

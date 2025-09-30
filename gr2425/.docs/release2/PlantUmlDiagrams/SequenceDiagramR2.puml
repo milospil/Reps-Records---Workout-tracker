@@ -1,0 +1,43 @@
+@startuml SequenceDiagramR2
+actor User
+
+participant "UserManager" as UM
+participant "AppPersistence" as AP
+participant "WorkoutListDeserializer" as WLD
+participant "WorkoutSessionDeserializer" as WSD
+participant "WorkoutSessionExerciseDeserializer" as WSED
+participant "WorkoutSetDesserializer" as WOSD
+participant "FileStorage" as FS
+
+User -> UM: Login(username, password)
+UM -> AP: Load user data
+AP -> FS: Read JSON data
+FS --> AP: Return user data
+AP -> WLD: Deserialize workoutList
+WLD -> WSD: Deserialize WorkoutSession(s)
+WSD -> WSED: Deserialize WorkoutSessionExericsie(s)
+WSED -> WOSD: Deserialize WorkoutSet(s)
+WOSD -> WSED: Return WorkoutSet(s)
+WSED -> WSD: Return WorkoutSessionExercise(s)
+WSD --> WLD: Return WorkoutSession(s)
+WLD --> AP: Return workoutList
+AP --> UM: Return user data
+
+User -> UM: Add new WorkoutSession
+UM -> WLD: Add WorkoutSession to workoutList
+WLD -> WSD: Create WorkoutSession
+WSD -> WSED: Create WorkoutSessionExercise(s)
+WSED -> WOSD: Create WorkoutSet(s)
+
+User -> UM: Save workout session
+UM -> AP: Save user data
+AP -> WLD: Serialize workoutList
+WLD -> WSD: Serialize WorkoutSession(s)
+WSD --> WLD: Return serialized WorkoutSession(s)
+WLD --> AP: Return serialized workoutList
+AP -> FS: Write JSON data to file
+
+FS --> AP: Confirmation of data saved
+AP --> UM: Data saved successfully
+UM --> User: Success message
+@enduml

@@ -1,0 +1,194 @@
+@font-face {
+    font-family: 'Oswald';
+    src: url('fonts/Oswald-VariableFont_wght.ttf');
+  }
+
+.hyperlink {
+    -fx-font-family: "Oswald";
+    -fx-font-weight: 600;
+    -fx-border-color: transparent;
+}
+
+/* Labels */
+
+.label {
+    -fx-font-family: "Oswald";
+    -fx-font-weight: 700;
+    -fx-font-size: 16;
+}
+
+.label-small {
+  -fx-text-fill: #fff;
+  -fx-font-size: 12;
+}
+
+#targetMuscleLabel {
+  -fx-font-size: 10;
+}
+
+.header-class {
+  -fx-font-size: 36;
+}
+
+.header-class-two {
+  -fx-font-size: 20;
+}
+
+/* Buttons */
+
+.button .text {
+    -fx-font-family: "Oswald";
+    -fx-font-weight: 700;
+}
+
+#loginButton,
+#newUserButton {
+  -fx-font-size: 20;
+  -fx-background-color: #34CD43;
+}
+
+#loginButton:hover,
+#newUserButton:hover {
+  -fx-background-color: #289e33;
+}
+
+.finished-button {
+  -fx-padding: 10 0 10 0;
+  -fx-font-size: 20px;
+  -fx-font-weight: 700;
+  -fx-background-color: #E0CC17;
+}
+
+.finished-button:hover {
+  -fx-cursor: hand;
+  -fx-background-color: #cebb14;
+}
+
+/* Tab Pane */
+
+.tab {
+    -fx-font-family: "Oswald";
+    -fx-font-size: 16;
+}
+
+/* .tab-header-area .tab-header-background {
+  -fx-background-color: -fx-primary-color;
+} */
+
+.tab-pane .tab:selected {
+ -fx-background-color: #E0CC17;
+ -fx-background-insets: 0 0 0 0;
+ -fx-background-radius: 0 0 0 0;
+}
+
+.tab-pane .tab-header-area .tab:hover {
+  -fx-cursor: hand;
+  -fx-background-color: #E0CC17;
+}
+
+.tab .tab-label { 
+  -fx-alignment: CENTER;
+ -fx-font-weight: bold;
+ -fx-padding: 0 2 0 2;
+}
+
+.tab-pane:bottom *.tab-header-area {
+ -fx-padding: 0 0 0 0;
+}
+
+.tab-pane {
+ -fx-background-color: transparent;
+ -fx-tab-min-width: 50px;
+ -fx-tab-min-height: 50px;
+ -fx-tab-max-height: 50px;
+}
+
+.tab-pane .tab {
+ -fx-background-color: transparent;
+}
+
+.tab-pane .tab-down-button {
+  -fx-opacity: 0;
+  -fx-padding: 0;
+  -fx-background-color: transparent;
+}
+
+.tab-pane:focused .tab-header-area .headers-region .tab:selected .focus-indicator {
+  -fx-border-width: 0;
+ -fx-border-insets: 0 0 0 0;
+ -fx-border-radius: 0;
+}
+
+/* ListViews */
+
+.list-view {
+  -fx-padding: 0;
+}
+
+.list-view .virtual-flow {
+  -fx-padding: 0;
+}
+
+.list-view .list-cell:odd {
+    -fx-background-color: #6D6D6D;
+    -fx-pref-height: 60px;
+}
+
+.list-view .list-cell:even {
+    -fx-background-color: #8C8C8C;
+    -fx-pref-height: 60px;
+}
+
+#warmupListView .list-cell,
+#worksetListView .list-cell {
+  -fx-background-color: #353535;
+}
+
+.list-view .scroll-bar:horizontal {
+  -fx-opacity: 0;
+  -fx-pref-height: 0;
+  -fx-max-height: 0;
+}
+
+/* ListView Cells */
+
+.list-cell {
+  -fx-padding: 0;
+}
+
+.list-cell-class {
+  -fx-background-color: #353535;
+}
+
+.workout-cell-class {
+  -fx-background-color: #353535;
+}
+
+.list-cell-class:hover {
+  -fx-cursor: hand;
+  -fx-background-color: #272727;
+}
+
+/* Toggle Buttons */
+
+.toggle-button-background {
+  -fx-background-color:  #6D6D6D;
+  -fx-background-radius: 5px;
+  -fx-padding: 5 0 5 0;
+}
+
+.toggle-button {
+  -fx-background-color: transparent;
+  -fx-padding: 4 0 4 0;
+  -fx-font-weight: 700;
+  -fx-text-fill: #fff;
+}
+
+.toggle-button:hover {
+  -fx-cursor: hand;
+  -fx-background-color: #797979;
+}
+
+.toggle-button:selected {
+  -fx-background-color: #888888;
+}

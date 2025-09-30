@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="320.0" styleClass="list-cell-class" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxui.WorkoutComponentController">
+   <children>
+      <Line endY="60.0" stroke="#34cd43" strokeWidth="4.0" />
+      <VBox prefHeight="60.0" prefWidth="242.0">
+         <children>
+            <HBox prefHeight="46.0" prefWidth="226.0">
+               <children>
+                  <Label fx:id="dateLabel" prefHeight="30.0" prefWidth="137.0" text="Placeholder" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="hoursAndMinutesLabel" alignment="CENTER" opacity="0.7" prefHeight="32.0" prefWidth="89.0" text="Placeholder" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <Label fx:id="workoutNameLabel" opacity="0.7" prefHeight="43.0" prefWidth="155.0" text="Placeholder" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </VBox>
+      <Button fx:id="removeButton" mnemonicParsing="false" style="-fx-background-color: #FF6B6B;" text="Remove">
+         <HBox.margin>
+            <Insets right="5.0" />
+         </HBox.margin>
+      </Button>
+   </children>
+</HBox>

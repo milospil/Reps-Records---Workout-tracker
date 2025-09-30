@@ -1,0 +1,40 @@
+schemaVersion: 2.2.0
+metadata:
+  name: reps&records-dev-environment
+  version: 1.0.0
+components:
+  - name: app
+    container:
+      image: adrianstoica/it1901:latest
+      memoryLimit: 3Gi
+      endpoints:
+        - exposure: public
+          name: 6080-tcp
+          protocol: https
+          targetPort: 6080
+        - exposure: public
+          name: 3000-tcp
+          protocol: http
+          targetPort: 3000
+        - exposure: public
+          name: 5900-tcp
+          protocol: http
+          targetPort: 5900
+        - exposure: public
+          name: 5901-tcp
+          protocol: http
+          targetPort: 5901
+        - exposure: public
+          name: 8080-tcp
+          protocol: http
+          targetPort: 8080
+        - exposure: public
+          name: 5500-tcp
+          protocol: http
+          targetPort: 5500
+commands:
+  - id: changedir
+    exec:
+      component: app
+      commandLine: cd app
+      label: change directory

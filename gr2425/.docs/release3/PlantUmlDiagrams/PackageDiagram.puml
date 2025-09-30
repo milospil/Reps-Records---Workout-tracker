@@ -1,0 +1,63 @@
+@startuml PackageDiagram
+
+' Define testing and utility tools at the top
+package "Testing & Tools" {
+  [TestFX]
+  [Mockito]
+  [Wiremock]
+  [Jackson]
+  [JUnit]
+  [Spotbugs]
+}
+
+package "Core" {
+  [gr2425.core]
+}
+
+package "JSON" {
+  [gr2425.json]
+  component AppPersistence
+}
+
+package "FXUI" {
+  [gr2425.fxui]
+  component UserManagerAccess
+  component RemoteUserManagerAccess
+}
+
+package "Restserver" {
+  [gr2425.restserver]
+}
+
+package "Rest-API" {
+  [gr2425.restapi]
+}
+
+package "External Libraries" {
+  [JavaFX]
+  [FXML]
+  [Spring Boot]
+}
+
+[JavaFX] --> [gr2425.fxui]
+[FXML] --> [gr2425.fxui]
+[Spring Boot] --> [gr2425.restserver]
+
+[gr2425.fxui] --> [UserManagerAccess] : Uses UserManagerAccess
+[gr2425.restserver] --> AppPersistence : Uses for data persistence
+
+[gr2425.restapi] --> RemoteUserManagerAccess : API Access
+[gr2425.restapi] --> "FXUI"
+[gr2425.restapi] --> "Restserver"
+"FXUI" --> "Core"
+
+RemoteUserManagerAccess --> UserManagerAccess : Uses UserManagerAccess
+
+[TestFX] --> [gr2425.fxui]
+[Mockito] --> [gr2425.fxui]
+[Wiremock] --> [gr2425.restserver]
+[JUnit] --> [gr2425.core]
+[Jackson] --> [gr2425.json]
+[Spotbugs] --> [gr2425.core]
+
+@enduml

@@ -1,0 +1,56 @@
+@startuml SequenceDiagramR3
+actor User
+
+participant "UserManager" as UM
+participant "RemoteUserManagerAccess" as RUMA
+participant "AppPersistence" as AP
+participant "WorkoutListDeserializer" as WLD
+participant "WorkoutSessionDeserializer" as WSD
+participant "WorkoutSessionExerciseDeserializer" as WSED
+participant "WorkoutSetDesserializer" as WOSD
+participant "FileStorage" as FS
+participant "RESTServer" as RS
+participant "HTTPClient" as HC
+
+User -> UM: Login(username, password)
+UM -> RUMA: Request user data (REST API)
+RUMA -> HC: Send GET /api/users/{username}
+HC -> RS: HTTP GET /api/users/{username}
+RS --> HC: Return JSON user data
+HC --> RUMA: Return JSON user data
+RUMA -> WLD: Deserialize workoutList from JSON
+WLD -> WSD: Deserialize WorkoutSession(s)
+WSD -> WSED: Deserialize WorkoutSessionExercise(s)
+WSED -> WOSD: Deserialize WorkoutSet(s)
+WOSD -> WSED: Return WorkoutSet(s)
+WSED -> WSD: Return WorkoutSessionExercise(s)
+WSD --> WLD: Return WorkoutSession(s)
+WLD --> RUMA: Return workoutList
+RUMA --> UM: Return user data
+
+User -> UM: Add new WorkoutSession
+UM -> WLD: Add WorkoutSession to workoutList
+WLD -> WSD: Create WorkoutSession
+WSD -> WSED: Create WorkoutSessionExercise(s)
+WSED -> WOSD: Create WorkoutSet(s)
+
+User -> UM: Save workout session
+UM -> RUMA: Serialize user data to JSON
+RUMA -> HC: HTTP POST /api/users (Save JSON data)
+HC -> RS: Send JSON data to save
+RS --> HC: Return confirmation
+HC --> RUMA: Confirm data saved
+RUMA --> UM: Data saved on server
+
+UM -> AP: Serialize user data
+AP -> WLD: Serialize workoutList to JSON
+WLD -> WSD: Serialize WorkoutSession(s)
+WSD --> WLD: Return serialized WorkoutSession(s)
+WLD --> AP: Return serialized workoutList
+AP -> FS: Write JSON data to file
+FS --> AP: Confirmation of data saved
+AP --> UM: Data saved locally
+
+
+UM --> User: Success message
+@enduml

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="exerciseSetPage" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="320.0" style="-fx-background-color: #353535;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fxui.ExerciseSetsController">
+   <children>
+      <HBox alignment="BOTTOM_CENTER" prefHeight="70.0" prefWidth="320.0">
+         <children>
+            <Hyperlink fx:id="returnButton" alignment="BOTTOM_LEFT" onAction="#handleReturnButton" prefHeight="70.0" prefWidth="275.0" text="Go back" underline="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Hyperlink>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+      <Line endX="320.0" stroke="WHITE" />
+      <Label fx:id="exerciseLabel" alignment="CENTER" prefWidth="320.0" text="EXERCISE" textFill="WHITE" />
+      <Label fx:id="clockLabel" alignment="CENTER" prefWidth="320.0" text="00:00:00" textFill="#e0cc17" />
+      <Line endX="320.0" stroke="WHITE" />
+      <VBox alignment="TOP_CENTER" prefHeight="478.0" prefWidth="320.0" style="-fx-background-color: #353535;">
+         <children>
+            <Label alignment="CENTER" prefWidth="320.0" text="OPPVARMING" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </Label>
+            <Button fx:id="addWarmupSetButton" mnemonicParsing="false" onAction="#handleAddWarmupSet" text="Add a set">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <ListView fx:id="warmupListView" fixedCellSize="60.0" maxWidth="320.0" prefHeight="220.0" prefWidth="320.0" style="-fx-background-color: #353535;" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ListView>
+            <Label alignment="CENTER" prefWidth="320.0" stylesheets="@styles.css" text="ARBEIDS-SETT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" top="10.0" />
+               </padding>
+            </Label>
+            <Button fx:id="addWorkoutSetButton" mnemonicParsing="false" onAction="#handleAddWorkoutSet" text="Add a set" />
+            <ListView fx:id="worksetListView" fixedCellSize="60.0" maxWidth="320.0" prefHeight="220.0" prefWidth="320.0" style="-fx-background-color: #353535;" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ListView>
+         </children>
+      </VBox>
+   </children>
+</VBox>

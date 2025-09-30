@@ -1,0 +1,107 @@
+{
+  "userList": [
+    {
+      "username" : "Test",
+      "password" : "Test123!",
+      "eMail" : "Testing@Gmail.com",
+      "fullName" : "Test",
+      "workoutList" : [],
+      "exerciseDatabase" : [ {
+        "exerciseName" : "Push Up",
+        "purpose" : "ARMS",
+        "mechanics" : "COMPOUND",
+        "force" : "PUSH"
+      }, {
+        "exerciseName" : "Squat",
+        "purpose" : "LEGS",
+        "mechanics" : "COMPOUND",
+        "force" : "PUSH"
+      }, {
+        "exerciseName" : "Deadlift",
+        "purpose" : "BACK",
+        "mechanics" : "COMPOUND",
+        "force" : "PULL"
+      }, {
+        "exerciseName" : "Bench Press",
+        "purpose" : "CHEST",
+        "mechanics" : "COMPOUND",
+        "force" : "PUSH"
+      }, {
+        "exerciseName" : "Overhead Press",
+        "purpose" : "ARMS",
+        "mechanics" : "COMPOUND",
+        "force" : "PUSH"
+      }, {
+        "exerciseName" : "Pull Up",
+        "purpose" : "BACK",
+        "mechanics" : "COMPOUND",
+        "force" : "PULL"
+      }, {
+        "exerciseName" : "Lunges",
+        "purpose" : "LEGS",
+        "mechanics" : "COMPOUND",
+        "force" : "PUSH"
+      }, {
+        "exerciseName" : "Plank",
+        "purpose" : "ABDOMINALS",
+        "mechanics" : "STATIC",
+        "force" : "STATIC"
+      }, {
+        "exerciseName" : "Bicep Curl",
+        "purpose" : "ARMS",
+        "mechanics" : "ISOLATING",
+        "force" : "PULL"
+      }, {
+        "exerciseName" : "Tricep Dips",
+        "purpose" : "ARMS",
+        "mechanics" : "COMPOUND",
+        "force" : "PUSH"
+      }, {
+        "exerciseName" : "Leg Press",
+        "purpose" : "LEGS",
+        "mechanics" : "COMPOUND",
+        "force" : "PUSH"
+      }, {
+        "exerciseName" : "Chest Fly",
+        "purpose" : "CHEST",
+        "mechanics" : "ISOLATING",
+        "force" : "PUSH"
+      }, {
+        "exerciseName" : "Mountain Climbers",
+        "purpose" : "STAMINA",
+        "mechanics" : "COMPOUND",
+        "force" : "PUSH"
+      }, {
+        "exerciseName" : "Burpees",
+        "purpose" : "STAMINA",
+        "mechanics" : "COMPOUND",
+        "force" : "PUSH"
+      }, {
+        "exerciseName" : "Jumping Jacks",
+        "purpose" : "STAMINA",
+        "mechanics" : "COMPOUND",
+        "force" : "PUSH"
+      }, {
+        "exerciseName" : "Russian Twists",
+        "purpose" : "ABDOMINALS",
+        "mechanics" : "ISOLATING",
+        "force" : "STATIC"
+      }, {
+        "exerciseName" : "Side Plank",
+        "purpose" : "ABDOMINALS",
+        "mechanics" : "STATIC",
+        "force" : "STATIC"
+      }, {
+        "exerciseName" : "New Exercise",
+        "purpose" : "CHEST",
+        "mechanics" : "ISOLATING",
+        "force" : "PUSH"
+      }, {
+        "exerciseName" : "New",
+        "purpose" : "ABDOMINALS",
+        "mechanics" : "ISOLATING",
+        "force" : "PUSH"
+      } ]
+    }
+  ]
+}

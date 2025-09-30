@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>gruppe25.app</groupId>
+  <artifactId>parent</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>app</name>
+
+  <properties>
+        <jackson.version>2.15.2</jackson.version>
+        <org.junit.version>5.9.3</org.junit.version>
+        <spotbugs.annotations.version>4.8.6</spotbugs.annotations.version>
+        <skipUiTests>false</skipUiTests>
+        <headlessTests>false</headlessTests>
+  </properties>
+
+
+<dependencyManagement>
+  <dependencies>
+    <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+              <groupId>com.fasterxml.jackson.datatype</groupId>
+              <artifactId>jackson-datatype-jsr310</artifactId>
+              <version>${jackson.version}</version> <!-- Or the version matching your Jackson version -->
+          </dependency>
+            <dependency>
+              <groupId>org.junit.jupiter</groupId>
+              <artifactId>junit-jupiter-api</artifactId>
+              <version>${org.junit.version}</version>
+              <scope>test</scope>
+            </dependency>
+            <dependency>
+              <groupId>org.junit.jupiter</groupId>
+              <artifactId>junit-jupiter-engine</artifactId>
+              <version>${org.junit.version}</version>
+              <scope>test</scope>
+            </dependency>
+            <dependency>
+              <groupId>com.github.spotbugs</groupId>
+              <artifactId>spotbugs-annotations</artifactId>
+              <version>${spotbugs.annotations.version}</version>
+          </dependency>
+    </dependencies>
+</dependencyManagement>
+    
+  <build>  
+    <plugins> 
+
+    <!-- JaCoCo configuration for code coverage analysis during tests. -->
+      <plugin>         
+        <groupId>org.jacoco</groupId>        
+        <artifactId>jacoco-maven-plugin</artifactId>        
+        <version>0.8.11</version>      
+        <executions>             
+          <execution>                 
+            <goals>                    
+              <goal>prepare-agent</goal>                 
+            </goals>            
+          </execution>     
+        </executions>
+      </plugin>
+
+    <!-- Checkstyle configuration to enforce coding standards and style guidelines. -->
+     <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>3.2.0</version>
+          <dependencies>
+              <dependency>
+                  <groupId>com.puppycrawl.tools</groupId>
+                  <artifactId>checkstyle</artifactId>
+                  <version>10.20.1</version>
+              </dependency>
+          </dependencies>
+          <configuration>
+              <configLocation>config/checkstyle/google_checks.xml</configLocation>
+              <consoleOutput>true</consoleOutput>
+              <failsOnError>true</failsOnError>
+              <linkXRef>false</linkXRef>
+          </configuration>
+          <executions>
+              <execution>
+              <id>checkstyle-check</id>
+              <phase>verify</phase>
+              <goals>
+                  <goal>check</goal>
+              </goals>
+              </execution>
+          </executions>
+      </plugin>
+
+      <!-- SpotBugs configuration to perform static analysis and identify potential bugs. -->
+      <plugin>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-maven-plugin</artifactId>
+            <version>4.8.6.4</version>
+            <configuration>
+                <xmlOutput>false</xmlOutput>
+                <htmlOutput>true</htmlOutput>
+                <excludeFilterFile>config/spotbugs/exclude.xml</excludeFilterFile>
+            </configuration>
+            <executions>
+                <execution>
+                <id>spotbugs-check</id>
+                <phase>verify</phase>
+                <goals>
+                    <goal>check</goal>
+                </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+  </build>
+  
+  <modules>
+    <module>core</module>  
+    <module>fxui</module>
+    <module>restserver</module>
+    <module>aggregate-report</module>
+  </modules>
+      
+</project>

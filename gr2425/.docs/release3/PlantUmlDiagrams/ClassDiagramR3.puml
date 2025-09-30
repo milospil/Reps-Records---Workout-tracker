@@ -1,0 +1,83 @@
+@startuml ClassDiagramR3
+class User {
+    - String username
+    - String password
+    - String email
+    - String fullName
+    - List<WorkoutSession> workoutList
+    - List<Exercise> exerciseDatabase
+    + addExercise(Exercise)
+    + addSession(WorkoutSession)
+}
+
+class WorkoutSession {
+    - String name
+    - Type type
+    - Intensity intensity
+    + addExerciseToWorkout(WorkoutSessionExercise)
+}
+
+class WorkoutSessionExercise {
+    - String exerciseName
+    - Purpose purpose
+    - Mechanics mechanics
+    - Force force
+    - List<WorkoutSet> workoutSets
+    + addWorkoutSet(WorkoutSet)
+}
+
+class WorkoutSet {
+    - int setNumber
+    - int kilos
+    - int reps
+}
+
+class Exercise {
+    - String name
+    - Purpose purpose
+    - Mechanics mechanics
+    - Force force
+}
+
+class RemoteUserManagerAccess {
+    - HttpClient httpClient
+    - ObjectMapper objectMapper
+    + getUserByUsername(String): User
+    + createUser(User): User
+    + deleteUser(String)
+    + getAllUsernames(): List<String>
+}
+
+class UserManager {
+    + addUser(User)
+    + removeUser(User)
+    + getUserByUsername(String): User
+}
+
+interface UserManagerAccess {
+    + getUserByUsername(String): User
+    + createUser(User): User
+    + deleteUser(String)
+}
+
+class AppPersistence {
+    + saveUserManager(UserManager)
+    + loadUserManager(): UserManager
+}
+
+UserManagerAccess <|.. RemoteUserManagerAccess
+UserManagerAccess <|.. UserManager
+
+User "1" -- "0..*" WorkoutSession
+WorkoutSession "1" -- "0..*" WorkoutSessionExercise
+WorkoutSessionExercise "1" -- "0..*" WorkoutSet
+User "1" -- "0..*" Exercise
+
+UserManager --> User
+UserManager --|> UserManagerAccess
+WorkoutSessionExercise --|> Exercise: Extends
+RemoteUserManagerAccess --|> UserManagerAccess
+RemoteUserManagerAccess --> HttpClient : dependency
+UserManager --> AppPersistence : uses
+RemoteUserManagerAccess --> AppPersistence : uses
+@enduml

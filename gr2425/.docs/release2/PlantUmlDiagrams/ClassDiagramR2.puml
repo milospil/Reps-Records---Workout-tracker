@@ -1,0 +1,98 @@
+@startuml ClassDiagramR2
+class User {
+    - String username
+    - String password
+    - String email
+    - String fullName
+    - List<WorkoutSession> workoutList
+    - List<Exercise> exerciseDatabase
+    + void setUsername(String)
+    + void setPassword(String)
+    + void setEmail(String)
+    + void setFullName(String)
+    + void setExercises(List<Exercise>)
+    + void addExercise(Exercise)
+    + void addSession(WorkoutSession)
+    + List<WorkoutSession> getSessions()
+    + String getUsername()
+    + String getPassword()
+    + String getEmail()
+    + String getFullName()
+    + void setWorkoutList(List<WorkoutSession>)
+    + void removeWorkout(WorkoutSession)
+    + List<Exercise> getExerciseDatabase()
+}
+
+class WorkoutSession {
+    - String name
+    - Type type
+    - Intensity intensity
+    - WorkoutExerciseList exerciseList
+    + void addExerciseToWorkout(WorkoutSessionExercise)
+    + String getName()
+    + Type getType()
+    + Intensity getIntensity()
+    + List<WorkoutSessionExercise> getExerciseList()
+}
+
+class WorkoutSessionExercise {
+    - String exerciseName
+    - Purpose purpose
+    - Mechanics mechanics
+    - Force force
+    - List<WorkoutSet> workoutSets
+    + void addWorkoutSet(WorkoutSet)
+    + void removeWorkoutSet(WorkoutSet)
+    + void setWorkoutSets(List<WorkoutSet>)
+    + List<WorkoutSet> getWorkoutSets()
+}
+
+
+class WorkoutSet {
+    - int setNumber
+    - int kilos
+    - int reps
+    + void setSetNumber()
+    + void setKilosLifted()
+    + void setReps()
+    + int getSetNumber()
+    + int getKilos()
+    + int getReps()
+}
+
+class Exercise {
+    - String name
+    - Purpose purpose
+    - Mechanics mechanics
+    - Force force
+    + void setExerciseName()
+    + String getExerciseName()
+}
+
+
+' Serializers and Deserializers
+class UserSerializer
+class UserDeserializer
+class WorkoutSessionSerializer
+class WorkoutSessionDeserializer
+class WorkoutSetSerializer
+class WorkoutSetDeserializer
+class WorkoutSessionExerciseSerializer
+class WorkoutSessionExerciseDeserializer
+
+User "1" -- "0..*" WorkoutSession
+WorkoutSession "1" -- "0..*" WorkoutSessionExercise
+WorkoutSessionExercise "1" -- "0..*" WorkoutSet
+
+WorkoutSessionExercise --|> Exercise: Extends
+
+UserSerializer --|> User : Extends
+UserDeserializer --|> User: Extends
+WorkoutSessionSerializer --|> WorkoutSession: Extends
+WorkoutSessionDeserializer --|> WorkoutSession: Extends
+WorkoutSetSerializer --|> WorkoutSet: Extends
+WorkoutSetDeserializer --|> WorkoutSet: Extends
+WorkoutSessionExerciseSerializer --|> WorkoutSessionExercise: Extends
+WorkoutSessionExerciseDeserializer --|> WorkoutSessionExercise: Extends
+
+@enduml
